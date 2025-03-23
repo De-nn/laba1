@@ -1,0 +1,26 @@
+import time
+import tracemalloc
+
+A = int(input())
+B = int(input())
+tracemalloc.start() 
+start = time.time()
+
+n = 1
+v = B
+
+while v <= 10**18: 
+    if v % A == 0:
+        print(n)
+        break
+    v *= B
+    n += 1
+else:
+    print(-1)
+
+end = time.time() 
+current, peak = tracemalloc.get_traced_memory() 
+tracemalloc.stop() 
+
+print(f"Время выполнения: {end - start:.6f} секунд")
+print(f"Использовано памяти: {peak / 1024:.2f} КБ")
